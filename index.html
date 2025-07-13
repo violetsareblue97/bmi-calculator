@@ -17,115 +17,100 @@
             transition: left 0.5s ease-out;
             background: #fbbf24;
         }
+        
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-md border border-gray-200">
-        <!-- Header Section -->
-        <div class="bg-blue-900 text-yellow-300 p-6 text-center">
-            <h1 class="text-2xl font-bold">BMI Calculator</h1>
-            <p class="opacity-90">Body Mass Index Calculator</p>
+
+    <body bgcolor="#dddddd">
+    <div style="margin: 20px auto; width: 80%; background: white; border: 1px solid black">
+        <div style="background: #000080; color: yellow; padding: 10px; text-align: center;">
+            <font size="5" face="Arial"><b>BMI Calculator</b></font>
         </div>
 
-        <!-- Calculator Form -->
-        <div class="p-6">
-            <div class="mb-4">
-                <label for="height" class="block text-gray-700 mb-2">Height (cm)</label>
-                <div class="relative">
-                    <input type="number" id="height" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="170">
-                    <div class="absolute right-3 top-3 text-gray-400">cm</div>
-                </div>
-            </div>
 
-            <div class="mb-6">
-                <label for="weight" class="block text-gray-700 mb-2">Weight (kg)</label>
-                <div class="relative">
-                    <input type="number" id="weight" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="65">
-                    <div class="absolute right-3 top-3 text-gray-400">kg</div>
-                </div>
-            </div>
+        <div style="padding: 20px;">
+            <table width="100%">
+                <tr>
+                    <td><b>Height (cm)</b></td>
+                    <td><input type="number" id="height" style="width: 100%; padding: 5px; border: 1px solid #999; border-radius: 0;" placeholder="170"></td>
+                </tr>
+                <tr>
+                    <td><b>Weight (kg)</b></td>
+                    <td><input type="number" id="weight" style="width: 100%; padding: 5px; border: 1px solid #999; border-radius: 0;" placeholder="65"></td>
+                </tr>
+            </table>
 
-            <button id="calculate" class="w-full bg-blue-800 hover:bg-blue-900 text-yellow-300 py-3 px-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-[1.02]">
-                Calculate BMI
+            <button id="calculate" style="background: yellow; color: #000080; 
+            font-weight: bold; width: 100%; padding: 8px; margin-top: 10px; border: none; cursor: pointer;">
+                CALCULATE
             </button>
         </div>
 
-        <!-- BMI Result Section -->
-        <div id="result" class="hidden px-6 pb-6">
-            <div class="bg-blue-50 rounded-lg p-4 border-yellow-300 border-2">
-                <div class="flex justify-between items-center mb-2">
-                    <h3 class="font-bold text-gray-800">Your BMI Result</h3>
-                    <span id="bmi-value" class="text-2xl font-bold">22.5</span>
-                </div>
-                <p id="bmi-category" class="text-green-600 font-medium">Normal weight</p>
-                <p id="bmi-info" class="text-gray-600 mt-2 text-sm">Keep up the good work! Your weight is within the healthy range.</p>
-            </div>
+
+
+        
+        <div id="result" style="display: none; padding: 15px; background: #f0f0f0; text-align: center;">
+            <h3 style="color: #000080; font-weight: bold;"><u>YOUR BMI</u></h3>
+            <div id="bmi-value" style="font-size: 24px; font-weight: bold; color: orange; margin: 10px 0;">22.5</div>
+            <div id="bmi-category" style="color: #000080; font-weight: bold;">Normal weight</div>
         </div>
 
-        <!-- BMI Chart Visualization -->
-        <div class="px-6 pb-6">
-            <div class="flex justify-between text-xs text-gray-600 mb-1">
-                <span>Underweight</span>
-                <span>Normal</span>
-                <span>Overweight</span>
-                <span>Obese</span>
+
+        
+        <div style="padding: 15px; text-align: center;">
+            <div style="height: 20px; background: #000080; margin: 10px 0; position: relative;">
+                <div id="chart-pointer" style="width: 2px; height: 30px; background: yellow; position: absolute; top: -5px; left: 50%;"></div>
             </div>
-            <div class="bmi-chart h-4 rounded-full overflow-hidden relative">
-                <div class="chart-pointer absolute -top-4 w-2 h-8 bg-black rounded-sm -ml-1" style="left: 50%;"></div>
-            </div>
-            <div class="flex justify-between text-xs text-gray-600 mt-1">
-                <span><16</span>
-                <span>18.5</span>
+            <div style="display: flex; justify-content: space-between; font-size: 12px;">
+                <span>16</span>
                 <span>25</span>
                 <span>30</span>
                 <span>40+</span>
             </div>
         </div>
 
-        <!-- Health Information Section -->
-        <div class="bg-gray-50 p-6 border-t border-gray-200">
-            <h3 class="font-bold text-gray-800 mb-3">BMI Categories:</h3>
-            <ul class="space-y-2">
-                <li class="flex items-start">
-                    <span class="bg-blue-800 text-yellow-300 text-xs font-medium mr-2 px-2 py-0.5 rounded">BMI</span>
-                    <span class="text-blue-900">Underweight: < 18.5</span>
-                </li>
-                <li class="flex items-start">
-                    <span class="bg-blue-700 text-yellow-300 text-xs font-medium mr-2 px-2 py-0.5 rounded">BMI</span>
-                    <span class="text-blue-900">Normal weight: 18.5 - 25</span>
-                </li>
-                <li class="flex items-start">
-                    <span class="bg-yellow-400 text-blue-900 text-xs font-medium mr-2 px-2 py-0.5 rounded">BMI</span>
-                    <span class="text-blue-900">Overweight: 25 - 30</span>
-                </li>
-                <li class="flex items-start">
-                    <span class="bg-yellow-600 text-blue-900 text-xs font-medium mr-2 px-2 py-0.5 rounded">BMI</span>
-                    <span class="text-blue-900">Obese: > 30</span>
-                </li>
-            </ul>
+
+        <div style="background: #e0e0e0; padding: 15px; border-top: 1px solid #999;">
+            <h3 style="font-weight: bold; color: #333; margin-bottom: 10px;">BMI Categories:</h3>
+            <table width="100%" cellspacing="5" cellpadding="5">
+                <tr>
+                    <td bgcolor="navy" width="40"><font color="yellow">BMI</font></td>
+                    <td><b>Underweight:</b> < 18.5</td>
+                </tr>
+                <tr>
+                    <td bgcolor="blue" width="40"><font color="yellow">BMI</font></td>
+                    <td><b>Normal weight:</b> 18.5 - 25</td>
+                </tr>
+                <tr>
+                    <td bgcolor="yellow" width="40"><font color="navy">BMI</font></td>
+                    <td><b>Overweight:</b> 25 - 30</td>
+                </tr>
+                <tr>
+                    <td bgcolor="orange" width="40"><font color="navy">BMI</font></td>
+                    <td><b>Obese:</b> > 30</td>
+                </tr>
+            </table>
         </div>
     </div>
 
     <script>
         document.getElementById('calculate').addEventListener('click', function() {
-            // Get input values
-            const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
+
+            const height = parseFloat(document.getElementById('height').value) / 100; 
             const weight = parseFloat(document.getElementById('weight').value);
 
-            // Validate inputs
+
             if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
                 alert('Please enter valid height and weight');
                 return;
             }
 
-            // Calculate BMI
             const bmi = weight / (height * height);
             const roundedBMI = Math.round(bmi * 10) / 10;
 
-            // Display result
             document.getElementById('bmi-value').textContent = roundedBMI;
-            
-            // Determine category and style
+        
+    
             let category, color, message;
             if (bmi < 18.5) {
                 category = 'Underweight';
@@ -149,10 +134,8 @@
             document.getElementById('bmi-category').className = `${color} font-medium`;
             document.getElementById('bmi-info').textContent = message;
 
-            // Show result section
             document.getElementById('result').classList.remove('hidden');
 
-            // Update chart pointer position
             let pointerPosition = 0;
             if (bmi < 16) pointerPosition = 0;
             else if (bmi >= 16 && bmi < 18.5) pointerPosition = (bmi - 16) / 2.5 * 16.6;
@@ -163,19 +146,18 @@
 
             document.querySelector('.chart-pointer').style.left = `${pointerPosition}%`;
 
-            // Add animation class
+
             document.getElementById('bmi-value').classList.add('animate-bounce');
             setTimeout(() => {
                 document.getElementById('bmi-value').classList.remove('animate-bounce');
             }, 1000);
+        
         });
 
-        // Allow Enter key to trigger calculation
         document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                document.getElementById('calculate').click();
-            }
+                document.getElementById('calculate').click(); }
         });
-    </script>
+</script>
 </body>
 </html>
