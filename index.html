@@ -4,160 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .bmi-chart {
-            background: linear-gradient(to right, 
-                #1e3a8a 0%, 
-                #2563eb 33%, 
-                #fbbf24 66%, 
-                #b45309 100%);
-        }
-        .chart-pointer {
-            transition: left 0.5s ease-out;
-            background: #fbbf24;
-        }
-        
-    </style>
 </head>
-
-    <body bgcolor="#dddddd">
-    <div style="margin: 20px auto; width: 80%; background: white; border: 1px solid black">
-        <div style="background: #000080; color: yellow; padding: 10px; text-align: center;">
-            <font size="5" face="Arial"><b>BMI Calculator</b></font>
+<body bgcolor="#dddddd">
+    <div class="container">
+        <div class="header">
+            <h1>BMI Calculator</h1>
         </div>
 
-
-        <div style="padding: 20px;">
+        <div class="input-section">
             <table width="100%">
                 <tr>
                     <td><b>Height (cm)</b></td>
-                    <td><input type="number" id="height" style="width: 100%; padding: 5px; border: 1px solid #999; border-radius: 0;" placeholder="170"></td>
+                    <td><input type="number" id="height" placeholder="170"></td>
                 </tr>
                 <tr>
                     <td><b>Weight (kg)</b></td>
-                    <td><input type="number" id="weight" style="width: 100%; padding: 5px; border: 1px solid #999; border-radius: 0;" placeholder="65"></td>
+                    <td><input type="number" id="weight" placeholder="65"></td>
                 </tr>
             </table>
 
-            <button id="calculate" style="background: yellow; color: #000080; 
-            font-weight: bold; width: 100%; padding: 8px; margin-top: 10px; border: none; cursor: pointer;">
-                CALCULATE
-            </button>
+            <button id="calculate">CALCULATE</button>
         </div>
 
-
-
-        
-        <div id="result" style="display: none; padding: 15px; background: #f0f0f0; text-align: center;">
-            <h3 style="color: #000080; font-weight: bold;"><u>YOUR BMI</u></h3>
-            <div id="bmi-value" style="font-size: 24px; font-weight: bold; color: orange; margin: 10px 0;">22.5</div>
-            <div id="bmi-category" style="color: #000080; font-weight: bold;">Normal weight</div>
+        <div id="result" class="result" style="display: none;">
+            <h3><u>YOUR BMI</u></h3>
+            <div id="bmi-value">22.5</div>
+            <div id="bmi-category">Normal weight</div>
         </div>
 
-
-        
-        <div style="padding: 15px; text-align: center;">
-            <div style="height: 20px; background: #000080; margin: 10px 0; position: relative;">
-                <div id="chart-pointer" style="width: 2px; height: 30px; background: yellow; position: absolute; top: -5px; left: 50%;"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 12px;">
-                <span>16</span>
-                <span>25</span>
-                <span>30</span>
-                <span>40+</span>
-            </div>
-        </div>
-
-
-        <div style="background: #e0e0e0; padding: 15px; border-top: 1px solid #999;">
-            <h3 style="font-weight: bold; color: #333; margin-bottom: 10px;">BMI Categories:</h3>
-            <table width="100%" cellspacing="5" cellpadding="5">
+        <div class="bmi-categories">
+            <h3>BMI Categories:</h3>
+            <table width="100%">
                 <tr>
-                    <td bgcolor="navy" width="40"><font color="yellow">BMI</font></td>
+                    <td bgcolor="navy"><font color="yellow">BMI</font></td>
                     <td><b>Underweight:</b> < 18.5</td>
                 </tr>
                 <tr>
-                    <td bgcolor="blue" width="40"><font color="yellow">BMI</font></td>
+                    <td bgcolor="blue"><font color="yellow">BMI</font></td>
                     <td><b>Normal weight:</b> 18.5 - 25</td>
                 </tr>
                 <tr>
-                    <td bgcolor="yellow" width="40"><font color="navy">BMI</font></td>
+                    <td bgcolor="yellow"><font color="navy">BMI</font></td>
                     <td><b>Overweight:</b> 25 - 30</td>
                 </tr>
                 <tr>
-                    <td bgcolor="orange" width="40"><font color="navy">BMI</font></td>
+                    <td bgcolor="orange"><font color="navy">BMI</font></td>
                     <td><b>Obese:</b> > 30</td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <script>
-        document.getElementById('calculate').addEventListener('click', function() {
-
-            const height = parseFloat(document.getElementById('height').value) / 100; 
-            const weight = parseFloat(document.getElementById('weight').value);
-
-
-            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
-                alert('Please enter valid height and weight');
-                return;
-            }
-
-            const bmi = weight / (height * height);
-            const roundedBMI = Math.round(bmi * 10) / 10;
-
-            document.getElementById('bmi-value').textContent = roundedBMI;
-        
-    
-            let category, color, message;
-            if (bmi < 18.5) {
-                category = 'Underweight';
-                color = 'text-blue-600';
-                message = 'You might want to consult with a nutritionist about gaining weight in a healthy way.';
-            } else if (bmi <= 25) {
-                category = 'Normal weight';
-                color = 'text-green-600';
-                message = 'Great job! Your weight is within the healthy range.';
-            } else if (bmi <= 30) {
-                category = 'Overweight';
-                color = 'text-yellow-600';
-                message = 'Consider more physical activity and a balanced diet to reach a healthier weight.';
-            } else {
-                category = 'Obese';
-                color = 'text-red-600';
-                message = 'Please consult with a healthcare professional for personalized advice.';
-            }
-
-            document.getElementById('bmi-category').textContent = category;
-            document.getElementById('bmi-category').className = `${color} font-medium`;
-            document.getElementById('bmi-info').textContent = message;
-
-            document.getElementById('result').classList.remove('hidden');
-
-            let pointerPosition = 0;
-            if (bmi < 16) pointerPosition = 0;
-            else if (bmi >= 16 && bmi < 18.5) pointerPosition = (bmi - 16) / 2.5 * 16.6;
-            else if (bmi < 25) pointerPosition = 16.6 + (bmi - 18.5) / 6.5 * 16.6;
-            else if (bmi < 30) pointerPosition = 33.3 + (bmi - 25) / 5 * 16.6;
-            else if (bmi < 40) pointerPosition = 66.6 + (bmi - 30) / 10 * 16.6;
-            else pointerPosition = 100;
-
-            document.querySelector('.chart-pointer').style.left = `${pointerPosition}%`;
-
-
-            document.getElementById('bmi-value').classList.add('animate-bounce');
-            setTimeout(() => {
-                document.getElementById('bmi-value').classList.remove('animate-bounce');
-            }, 1000);
-        
-        });
-
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('calculate').click(); }
-        });
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
