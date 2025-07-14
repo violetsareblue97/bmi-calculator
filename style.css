@@ -1,0 +1,52 @@
+.container {
+    margin: 20px auto;
+    width: 80%;
+    background: white;
+    border: 1px solid black;
+}
+
+.header {
+    background: #000080;
+    color: yellow;
+    padding: 10px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-family: Arial, sans-serif;
+}
+
+.input-section {
+    padding: 20px;
+}
+
+.input-section input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 0;
+}
+
+#calculate {
+    background: yellow;
+    color: #000080;
+    font-weight: bold;
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.result {
+    padding: 15px;
+    background: #f0f0f0;
+    text-align: center;
+}
+
+.bmi-categories {
+    background: #e0e0e0;
+    padding: 15px;
+    border-top: 1px solid #999;
+}
