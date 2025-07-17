@@ -1,31 +1,28 @@
 function calculateBMI() {
-    // Ambil nilai berat dan tinggi dari input
     const weight = document.getElementById("weight").value;
     const height = document.getElementById("height").value;
 
-    // Validasi input: pastikan nilai tidak kosong dan angka
     if (weight === "" || height === "" || weight <= 0 || height <= 0) {
-        alert("Please enter valid weight and height!");
+        alert("Harap masukkan berat dan tinggi badan yang valid!");
         return;
     }
 
-    // Hitung BMI: Rumus BMI = berat / (tinggi * tinggi)
-    const bmi = weight / (height * height);
+    const heightInMeters = height / 100;
 
-    // Menampilkan hasil BMI dengan dua angka desimal
+    const bmi = weight / (heightInMeters * heightInMeters);
+
     document.getElementById("result").textContent = bmi.toFixed(2);
 
-    // Tentukan kategori BMI dan tampilkan
     let category = "";
     if (bmi < 18.5) {
-        category = "Underweight";
+        category = "Kekurangan berat badan";
     } else if (bmi >= 18.5 && bmi < 24.9) {
-        category = "Normal weight";
+        category = "Berat badan normal";
     } else if (bmi >= 25 && bmi < 29.9) {
-        category = "Overweight";
+        category = "Kelebihan berat badan";
     } else {
-        category = "Obesity";
+        category = "Obesitas";
     }
 
-    alert("Your BMI is " + bmi.toFixed(2) + " - " + category);
+    alert("BMI Anda adalah " + bmi.toFixed(2) + " - " + category);
 }
