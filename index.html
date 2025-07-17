@@ -4,57 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body bgcolor="#dddddd">
+<body>
     <div class="container">
-        <div class="header">
-            <h1>BMI Calculator</h1>
-        </div>
+        <h1>BMI Calculator</h1>
+        
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Enter your weight" />
 
-        <div class="input-section">
-            <table width="100%">
-                <tr>
-                    <td><b>Height (cm)</b></td>
-                    <td><input type="number" id="height" placeholder="170"></td>
-                </tr>
-                <tr>
-                    <td><b>Weight (kg)</b></td>
-                    <td><input type="number" id="weight" placeholder="65"></td>
-                </tr>
-            </table>
+        <label for="height">Height (m):</label>
+        <input type="number" id="height" placeholder="Enter your height" />
 
-            <button id="calculate">CALCULATE</button>
-        </div>
+        <button onclick="calculateBMI()">Calculate BMI</button>
 
-        <div id="result" class="result" style="display: none;">
-            <h3><u>YOUR BMI</u></h3>
-            <div id="bmi-value">22.5</div>
-            <div id="bmi-category">Normal weight</div>
-        </div>
-
-        <div class="bmi-categories">
-            <h3>BMI Categories:</h3>
-            <table width="100%">
-                <tr>
-                    <td bgcolor="navy"><font color="yellow">BMI</font></td>
-                    <td><b>Underweight:</b> < 18.5</td>
-                </tr>
-                <tr>
-                    <td bgcolor="blue"><font color="yellow">BMI</font></td>
-                    <td><b>Normal weight:</b> 18.5 - 25</td>
-                </tr>
-                <tr>
-                    <td bgcolor="yellow"><font color="navy">BMI</font></td>
-                    <td><b>Overweight:</b> 25 - 30</td>
-                </tr>
-                <tr>
-                    <td bgcolor="orange"><font color="navy">BMI</font></td>
-                    <td><b>Obese:</b> > 30</td>
-                </tr>
-            </table>
-        </div>
+        <h2>Your BMI: <span id="result">-</span></h2>
     </div>
 
     <script src="script.js"></script>
