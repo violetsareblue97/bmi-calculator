@@ -1,52 +1,58 @@
-.container {
-    margin: 20px auto;
-    width: 80%;
-    background: white;
-    border: 1px solid black;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.header {
-    background: #000080;
-    color: yellow;
-    padding: 10px;
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
     text-align: center;
 }
 
-.header h1 {
-    font-size: 2rem;
-    font-family: Arial, sans-serif;
+h1 {
+    color: #003366; /* Navy Blue */
 }
 
-.input-section {
-    padding: 20px;
+label {
+    font-size: 16px;
+    color: #003366; /* Navy Blue */
+    display: block;
+    margin-top: 10px;
 }
 
-.input-section input {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #999;
-    border-radius: 0;
-}
-
-#calculate {
-    background: yellow;
-    color: #000080;
-    font-weight: bold;
+input {
     width: 100%;
     padding: 8px;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 2px solid #003366; /* Navy Blue */
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #ffcc00; /* Yellow */
+    color: #003366; /* Navy Blue */
+    padding: 10px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.result {
-    padding: 15px;
-    background: #f0f0f0;
-    text-align: center;
+button:hover {
+    background-color: #ffb300;
 }
 
-.bmi-categories {
-    background: #e0e0e0;
-    padding: 15px;
-    border-top: 1px solid #999;
+h2 {
+    font-size: 20px;
+    color: #003366; /* Navy Blue */
 }
